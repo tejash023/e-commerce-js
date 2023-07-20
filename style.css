@@ -8,7 +8,7 @@
 
 header {
   background-color: orangered;
-  height: 10vh;
+  padding: 1%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +16,7 @@ header {
 
 header input {
   width: 30%;
-  padding: 8px 15px;
+  padding: 13px 15px;
   border: none;
   outline: none;
   border-radius: 50px;
@@ -27,7 +27,7 @@ header input:focus {
   transition: all 0.1 ease-in;
 }
 header button {
-  padding: 8px 15px;
+  padding: 13px 30px;
   border-radius: 50px;
   border: none;
   outline: none;
