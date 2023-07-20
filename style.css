@@ -13,3 +13,30 @@ header {
   align-items: center;
   justify-content: center;
 }
+
+header input {
+  width: 30%;
+  padding: 8px 15px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  margin-right: 15px;
+}
+header input:focus {
+  width: 32%;
+  transition: all 0.1 ease-in;
+}
+header button {
+  padding: 8px 15px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+header button:hover {
+  background: black;
+  color: white;
+  transition: all 0.1s ease-in;
+}
