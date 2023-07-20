@@ -63,7 +63,7 @@ header button:hover {
 }
 
 .product-card img {
-  width: 80%;
+  width: 60%;
 }
 
 .product-details {
@@ -75,6 +75,9 @@ header button:hover {
 
 .product-title {
   color: orangered;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .product-details p {
