@@ -147,6 +147,14 @@ footer {
   .product-card {
     width: 45%;
   }
+
+  header input {
+    width: 55%;
+  }
+  header input:focus {
+    width: 60%;
+    transition: all 0.1 ease-in;
+  }
 }
 
 @media only screen and (max-width: 600px) {
