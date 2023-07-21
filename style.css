@@ -6,12 +6,21 @@
   font-family: "Roboto", sans-serif;
 }
 
-header {
+#main-header {
   background-image: linear-gradient(19deg, #092f38 0%, #b721ff 100%);
+  /* background-color: orangered; */
   padding: 1%;
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
+  position: sticky;
+  transition: all 0.2s ease-in;
+}
+
+.header-scrolled {
+  background: rgb(40 63 92 / 81%) !important;
+  backdrop-filter: blur(2px);
 }
 
 header input {
@@ -21,6 +30,7 @@ header input {
   outline: none;
   border-radius: 5px;
   margin-right: 15px;
+  z-index: 100;
 }
 header input:focus {
   width: 38%;
@@ -34,7 +44,7 @@ header input:focus {
   justify-content: space-evenly;
   gap: 1.5rem;
   padding: 2%;
-  min-height: 100vh;
+  min-height: 75vh;
 }
 
 .product-card {

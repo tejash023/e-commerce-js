@@ -2,6 +2,8 @@ let products = [];
 const container = document.querySelector(".container");
 const searchButton = document.querySelector("#search");
 const inputArea = document.getElementById("search-query");
+const headerSection = document.querySelector("#main-header");
+
 let query = document.getElementById("search-query");
 
 // Making a GET request to fetch data from the server
@@ -91,5 +93,16 @@ function productRatings(rating) {
     return "moderate";
   } else {
     return "bad";
+  }
+}
+
+window.addEventListener("scroll", handleScroll);
+//handle scroll
+function handleScroll() {
+  if (window.scrollY > 0) {
+    console.log("scrolled");
+    headerSection.classList.add("header-scrolled");
+  } else {
+    headerSection.classList.remove("header-scrolled");
   }
 }
