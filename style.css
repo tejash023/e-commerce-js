@@ -16,19 +16,19 @@ header {
 
 header input {
   width: 30%;
-  padding: 13px 15px;
+  padding: 10px 15px;
   border: none;
   outline: none;
-  border-radius: 50px;
+  border-radius: 5px;
   margin-right: 15px;
 }
 header input:focus {
-  width: 32%;
+  width: 38%;
   transition: all 0.1 ease-in;
 }
 header button {
-  padding: 13px 30px;
-  border-radius: 50px;
+  padding: 10px 30px;
+  border-radius: 5px;
   border: none;
   outline: none;
   cursor: pointer;
