@@ -57,8 +57,14 @@ header input:focus {
     rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
+.product-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .product-card img {
-  width: 50%;
+  width: 70%;
   max-height: 250px;
 }
 
@@ -88,4 +94,32 @@ header input:focus {
 .product-price {
   font-size: 1rem;
   margin: 8px 0;
+}
+
+.more-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.product-category {
+  border: 1px solid lightgray;
+  padding: 5px;
+}
+
+.product-rating {
+  font-weight: 600;
+}
+
+.good {
+  color: #4caf50 !important;
+}
+
+.moderate {
+  color: #ff9800 !important;
+}
+
+.bad {
+  color: #f44336 !important;
 }

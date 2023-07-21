@@ -60,15 +60,36 @@ function renderProducts(products) {
     productData.classList.add("product-card");
 
     productData.innerHTML = `
-    <img src="${product.image}"
-    alt="${product.name}"/>
+    <div class="product-image">
+      <img src="${product.image}"
+      alt="${product.name}"/>
+    </div>
+    
     <div class="product-details">
         <h5 class="product-title">${product.title}</h5>
         <p>${product.description}</p>
+        <div class="more-details">
+          <p class="product-category">${product.category}</p>
+          <p class="product-rating ${productRatings(product.rating.rate)}">${
+      product.rating.rate
+    } <i class="fa fa-star"></i></p>
+        </div>
+        
         <h5 class="product-price">${product.price} $</h5>
     </div>
     `;
 
     container.appendChild(productData);
+  }
+}
+
+//product rating
+function productRatings(rating) {
+  if (rating >= 4.0) {
+    return "good";
+  } else if (rating < 4.0 && rating >= 3.0) {
+    return "moderate";
+  } else {
+    return "bad";
   }
 }
