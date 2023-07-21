@@ -3,8 +3,7 @@ const container = document.querySelector(".container");
 const searchButton = document.querySelector("#search");
 const inputArea = document.getElementById("search-query");
 const headerSection = document.querySelector("#main-header");
-
-let query = document.getElementById("search-query");
+const searchQuery = document.getElementById("search-query");
 
 // Making a GET request to fetch data from the server
 fetch("https://fakestoreapi.com/products")
@@ -28,7 +27,7 @@ fetch("https://fakestoreapi.com/products")
 //listening to input values
 inputArea.addEventListener("input", function (e) {
   e.preventDefault();
-  let searchResult = query.value.toLowerCase();
+  let searchResult = searchQuery.value.toLowerCase();
   let filteredResults = filterProducts(products, searchResult);
   console.log(filteredResults);
   container.innerHTML = "";
@@ -96,8 +95,9 @@ function productRatings(rating) {
   }
 }
 
-window.addEventListener("scroll", handleScroll);
 //handle scroll
+window.addEventListener("scroll", handleScroll);
+
 function handleScroll() {
   if (window.scrollY > 0) {
     console.log("scrolled");
