@@ -1,4 +1,8 @@
 let products = [];
+const container = document.querySelector(".container");
+const searchButton = document.querySelector("#search");
+const inputArea = document.getElementById("search-query");
+let query = document.getElementById("search-query");
 
 // Making a GET request to fetch data from the server
 fetch("https://fakestoreapi.com/products")
@@ -19,9 +23,34 @@ fetch("https://fakestoreapi.com/products")
     console.error("Fetch error:", error);
   });
 
-const container = document.querySelector(".container");
-const searchButton = document.querySelector("#search");
-let query = document.getElementById("search-query");
+//listening to input values
+inputArea.addEventListener("input", function (e) {
+  e.preventDefault();
+  let searchResult = query.value.toLowerCase();
+  let filteredResults = filterProducts(products, searchResult);
+  console.log(filteredResults);
+  container.innerHTML = "";
+  renderProducts(filteredResults);
+});
+
+//filtering products based on input
+function filterProducts(data, search) {
+  search = search.toLowerCase();
+
+  let filteredResult = [];
+  for (let i = 0; i < data.length; i++) {
+    // Destructure
+    const { title, description } = data[i];
+    const titleLC = title.toLowerCase();
+    const descriptionLC = description.toLowerCase();
+
+    // Searching
+    if (titleLC.includes(search) || descriptionLC.includes(search)) {
+      filteredResult.push(data[i]);
+    }
+  }
+  return filteredResult;
+}
 
 //renderProducts
 function renderProducts(products) {
@@ -42,37 +71,4 @@ function renderProducts(products) {
 
     container.appendChild(productData);
   }
-}
-
-searchButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  let searchResult = query.value.toLowerCase();
-  if (!searchResult || searchResult.length <= 0) {
-    alert("Enter valid search query");
-    return;
-  }
-  //console.log(searchResult, products);
-
-  let x = filterProducts(products, searchResult);
-  console.log(x);
-  container.innerHTML = "";
-  renderProducts(x);
-});
-
-function filterProducts(data, search) {
-  search = search.toLowerCase();
-
-  let filteredResult = [];
-  for (let i = 0; i < data.length; i++) {
-    // Destructure
-    const { title, description } = data[i];
-    const titleLC = title.toLowerCase();
-    const descriptionLC = description.toLowerCase();
-
-    // Searching
-    if (titleLC.includes(search) || descriptionLC.includes(search)) {
-      filteredResult.push(data[i]);
-    }
-  }
-  return filteredResult;
 }
