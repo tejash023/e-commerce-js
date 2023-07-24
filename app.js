@@ -4,6 +4,7 @@ const searchButton = document.querySelector("#search");
 const inputArea = document.getElementById("search-query");
 const headerSection = document.querySelector("#main-header");
 const searchQuery = document.getElementById("search-query");
+const sortButtons = document.querySelectorAll(".sort-button");
 
 // Making a GET request to fetch data from the server
 fetch("https://fakestoreapi.com/products")
@@ -72,17 +73,68 @@ function filterProducts(data, search) {
   let filteredResult = [];
   for (let i = 0; i < data.length; i++) {
     // Destructure
-    const { title, description } = data[i];
+    const { title, description, category } = data[i];
     const titleLC = title.toLowerCase();
     const descriptionLC = description.toLowerCase();
+    const categoryLC = category.toLowerCase();
 
     // Searching
     if (titleLC.includes(search) || descriptionLC.includes(search)) {
       filteredResult.push(data[i]);
     }
+
+    if (categoryLC === search) {
+      filteredResult.push(data[i]);
+    }
   }
+
   return filteredResult;
 }
+
+// Function to handle the sorting action
+function handleSortButtonClick(event) {
+  const buttonClicked = event.target;
+  const buttonText = buttonClicked.textContent;
+
+  // Remove "active" class from all buttons
+  sortButtons.forEach((button) => {
+    if (button !== buttonClicked) {
+      button.classList.remove("active");
+    }
+  });
+
+  // Toggle "active" class on the clicked button
+  buttonClicked.classList.toggle("active");
+  container.innerHTML = "";
+
+  switch (buttonText) {
+    case "Men's Clothing":
+      // Sort for men's clothing
+      renderProducts(filterProducts(products, "men's clothing"));
+      break;
+    case "Women's Clothing":
+      // Sort for women's clothing
+      renderProducts(filterProducts(products, "women's clothing"));
+      break;
+    case "Jewellery":
+      // Sort for jewellery
+      renderProducts(filterProducts(products, "jewelery"));
+      break;
+    case "Electronics":
+      // Sort for electronics
+      renderProducts(filterProducts(products, "electronics"));
+      break;
+    default:
+      // Handle the default case
+      renderProducts(products);
+      break;
+  }
+}
+
+// Attach the event listener to each button
+sortButtons.forEach((button) => {
+  button.addEventListener("click", handleSortButtonClick);
+});
 
 //product rating
 function productRatings(rating) {
