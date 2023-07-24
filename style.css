@@ -37,7 +37,30 @@ header input:focus {
   transition: all 0.1 ease-in;
 }
 
-.container {
+.product-controls {
+  background: #e3e3e3;
+  padding: 0px 45px;
+  padding-top: 20px;
+
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.product-controls button {
+  outline: none;
+  border: none;
+  background: white;
+  padding: 5px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.product-controls button:hover {
+  background: tomato;
+  color: white;
+}
+.product-container {
   background: #e3e3e3;
   display: flex;
   flex-wrap: wrap;

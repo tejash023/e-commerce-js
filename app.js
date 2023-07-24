@@ -1,5 +1,5 @@
 let products = [];
-const container = document.querySelector(".container");
+const container = document.querySelector(".product-container");
 const searchButton = document.querySelector("#search");
 const inputArea = document.getElementById("search-query");
 const headerSection = document.querySelector("#main-header");
@@ -23,35 +23,6 @@ fetch("https://fakestoreapi.com/products")
     // Handle errors
     console.error("Fetch error:", error);
   });
-
-//listening to input values
-inputArea.addEventListener("input", function (e) {
-  e.preventDefault();
-  let searchResult = searchQuery.value.toLowerCase();
-  let filteredResults = filterProducts(products, searchResult);
-  console.log(filteredResults);
-  container.innerHTML = "";
-  renderProducts(filteredResults);
-});
-
-//filtering products based on input
-function filterProducts(data, search) {
-  search = search.toLowerCase();
-
-  let filteredResult = [];
-  for (let i = 0; i < data.length; i++) {
-    // Destructure
-    const { title, description } = data[i];
-    const titleLC = title.toLowerCase();
-    const descriptionLC = description.toLowerCase();
-
-    // Searching
-    if (titleLC.includes(search) || descriptionLC.includes(search)) {
-      filteredResult.push(data[i]);
-    }
-  }
-  return filteredResult;
-}
 
 //renderProducts
 function renderProducts(products) {
@@ -82,6 +53,35 @@ function renderProducts(products) {
 
     container.appendChild(productData);
   }
+}
+
+//listening to input values
+inputArea.addEventListener("input", function (e) {
+  e.preventDefault();
+  let searchResult = searchQuery.value.toLowerCase();
+  let filteredResults = filterProducts(products, searchResult);
+  console.log(filteredResults);
+  container.innerHTML = "";
+  renderProducts(filteredResults);
+});
+
+//filtering products based on input
+function filterProducts(data, search) {
+  search = search.toLowerCase();
+
+  let filteredResult = [];
+  for (let i = 0; i < data.length; i++) {
+    // Destructure
+    const { title, description } = data[i];
+    const titleLC = title.toLowerCase();
+    const descriptionLC = description.toLowerCase();
+
+    // Searching
+    if (titleLC.includes(search) || descriptionLC.includes(search)) {
+      filteredResult.push(data[i]);
+    }
+  }
+  return filteredResult;
 }
 
 //product rating
