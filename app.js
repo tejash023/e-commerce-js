@@ -61,7 +61,6 @@ inputArea.addEventListener("input", function (e) {
   e.preventDefault();
   let searchResult = searchQuery.value.toLowerCase();
   let filteredResults = filterProducts(products, searchResult);
-  console.log(filteredResults);
   container.innerHTML = "";
   renderProducts(filteredResults);
 });
@@ -110,19 +109,19 @@ function handleSortButtonClick(event) {
   switch (buttonText) {
     case "Men's Clothing":
       // Sort for men's clothing
-      renderProducts(filterProducts(products, "men's clothing"));
+      renderProducts(filterProducts(products, buttonText.toLowerCase()));
       break;
     case "Women's Clothing":
       // Sort for women's clothing
-      renderProducts(filterProducts(products, "women's clothing"));
+      renderProducts(filterProducts(products, buttonText.toLowerCase()));
       break;
-    case "Jewellery":
+    case "Jewelery":
       // Sort for jewellery
-      renderProducts(filterProducts(products, "jewelery"));
+      renderProducts(filterProducts(products, buttonText.toLowerCase()));
       break;
     case "Electronics":
       // Sort for electronics
-      renderProducts(filterProducts(products, "electronics"));
+      renderProducts(filterProducts(products, buttonText.toLowerCase()));
       break;
     default:
       // Handle the default case
